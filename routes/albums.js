@@ -1,21 +1,24 @@
+//MONGOLAB_URI: mongodb://heroku_app16441027:tes4h1r4nosb41om8rbdsmo27j@ds031618.mongolab.com:31618/heroku_app16441027
+
 var mongo = require('mongodb');
 
 var Server = mongo.Server,
     Db = mongo.Db,
     BSON = mongo.BSONPure;
-
-var server = new Server('localhost', 27017, {auto_reconnect: true});
-db = new Db('albumdb', server, {safe: true});
+var server = new Server('ds031618.mongolab.com', 31618, {auto_reconnect: true});
+db = new Db('heroku_app16441027', server, {safe: true});
 
 db.open(function(err, db) {
     if(!err) {
-        console.log("Connected to 'albumdb' database");
-        db.collection('albums', {safe:true}, function(err, collection) {
-            if (err) {
-                console.log("The 'albums' collection doesn't exist. Creating it with sample data...");
-                populateDB();
-            }
-        });
+        console.log("Connected to 'heroku_app16441027' database");
+			db.authenticate('heroku_app16441027', 'tes4h1r4nosb41om8rbdsmo27j', function(err, result) {
+				db.collection('albums', {safe:true}, function(err, collection) {
+					if (err) {
+						console.log("The 'albums' collection doesn't exist. Creating it with sample data...");
+						populateDB();
+					}
+				});
+			})
     }
 });
 
