@@ -43,7 +43,7 @@ String.prototype.contains = function(it) { return this.indexOf(it) != -1; };
 
 /*jslint nomen: true, regexp: true, unparam: true, stupid: true */
 /*global require, __dirname, unescape, console */
-
+console.log("the port here is>> "+port);
 (function (port) {
     'use strict';
     var path = require('path'),
