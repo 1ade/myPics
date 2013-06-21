@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>MyAlbums</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+	<link href='http://fonts.googleapis.com/css?family=Lily+Script+One' rel='stylesheet' type='text/css'>
+    <link href="css/metro-bootstrap.css" rel="stylesheet">
+	<link href="css/fancyList.css" rel="stylesheet">
+	<link rel="stylesheet" href="../css/upload/style.css">
+	<link rel="stylesheet" href="../css/upload/jquery.fileupload-ui.css">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+	
+	
+	
+	
+
+    <style>
+        body {
+            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        }
+		
+		
+		
+    </style>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/css/base/jquery.ui.all.min.css">
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script src="http://use.edgefonts.net/andika.js"></script>
+    <script src="http://use.edgefonts.net/arvo.js"></script>
+
+	
+
+</head>
+
+<body>
+
+<div class="header"></div>
+
+<div class="container">
+	<div class="row-fluid ">
+		<div class="span2">
+		
+		</div>
+		<div class="span9">
+			<div id="content"  ></div>
+		</div>
+		<div class="span2">
+			
+		</div>
+    </div>
+	<footer class="footer">
+        <p class="pull-right"><a href="#">Back Home</a></p>
+        <p>Built as a sample application with <a href="http://documentcloud.github.com/backbone/">Backbone.js</a>,
+        <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>,
+        <a href="http://nodejs.org/">Node.js</a>,
+        <a href="http://expressjs.com/">Express</a>,
+        and <a href="http://www.mongodb.org/">MongoDB</a> by
+        <a href="http://coenraets.org" target="_blank">Ifaturoti Adeyemi</a>.<br/>
+        The source code for this application is available in <a href="#">this repository</a> on GitHub.</p>
+    </footer>
+
+</div>
+
+
+
+
+<!-- modal-gallery is the modal dialog used for the image gallery -->
+<div id="modal-gallery" class="modal modal-gallery hide fade" data-filter=":odd" tabindex="-1">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">&times;</a>
+        <h3 class="modal-title"></h3>
+    </div>
+    <div class="modal-body"><div class="modal-image"></div></div>
+    <div class="modal-footer">
+        <a class="btn modal-download" target="_blank">
+            <i class="icon-download"></i>
+            <span>Download</span>
+        </a>
+        <a class="btn btn-success modal-play modal-slideshow" data-slideshow="5000">
+            <i class="icon-play icon-white"></i>
+            <span>Slideshow</span>
+        </a>
+        <a class="btn btn-info modal-prev">
+            <i class="icon-arrow-left icon-white"></i>
+            <span>Previous</span>
+        </a>
+        <a class="btn btn-primary modal-next">
+            <span>Next</span>
+            <i class="icon-arrow-right icon-white"></i>
+        </a>
+    </div>
+</div>
+
+<!-- The template to display files available for upload -->
+<script id="template-upload" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-upload fade">
+        <td>
+            <span class="preview"></span>
+        </td>
+        <td>
+            <p class="name">{%=file.name%}</p>
+            {% if (file.error) { %}
+                <div><span class="label label-important">Error</span> {%=file.error%}</div>
+            {% } %}
+        </td>
+        <td>
+            <p class="size">{%=o.formatFileSize(file.size)%}</p>
+            {% if (!o.files.error) { %}
+                <div class="progress progress-success progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="bar" style="width:0%;"></div></div>
+            {% } %}
+        </td>
+        <td>
+            {% if (!o.files.error && !i && !o.options.autoUpload) { %}
+                <button class="btn btn-primary start">
+                    <i class="icon-upload icon-white"></i>
+                    <span>Start</span>
+                </button>
+            {% } %}
+            {% if (!i) { %}
+                <button class="btn btn-warning cancel">
+                    <i class="icon-ban-circle icon-white"></i>
+                    <span>Cancel</span>
+                </button>
+            {% } %}
+        </td>
+    </tr>
+{% } %}
+</script>
+<!-- The template to display files available for download -->
+<script id="template-download" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-download fade">
+        <td>
+            <span class="preview">
+                {% if (file.thumbnail_url) { %}
+                    <a href="{%=file.url%}" title="{%=file.name%}" data-gallery="gallery" download="{%=file.name%}"><img src="{%=file.thumbnail_url%}"></a>
+                {% } %}
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                <a href="{%=file.url%}" title="{%=file.name%}" data-gallery="{%=file.thumbnail_url&&'gallery'%}" download="{%=file.name%}">{%=file.name%}</a>
+            </p>
+            {% if (file.error) { %}
+                <div><span class="label label-important">Error</span> {%=file.error%}</div>
+            {% } %}
+        </td>
+        <td>
+            <span class="size">{%=o.formatFileSize(file.size)%}</span>
+        </td>
+        <td>
+            <button class="btn btn-danger delete" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}"{% if (file.delete_with_credentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+                <i class="icon-trash icon-white"/>
+            </button>
+            <input type="checkbox" name="delete" value="1" class="toggle">
+        </td>
+    </tr>
+{% } %}
+</script>
+
+
+
+
+
+
+
+
+
+
+<!-- /container -->
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="lib/jquery-1.8.2.min.js"></script>
+<script src="../js/upload/jquery-ui.min.js"></script>
+<script src="lib/underscore-min.js"></script>
+<script src="lib/backbone-min.js"></script>
+<script src="lib/bootstrap.min.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/models/albummodels.js"></script>
+<script src="js/views/paginator.js"></script>
+<script src="js/views/header.js"></script>
+<script src="js/views/home.js"></script>
+<script src="js/views/pictureslist.js"></script>
+<script src="js/views/albumlist.js"></script>
+<script src="js/views/albumdetails.js"></script>
+<script src="js/main.js"></script>
+
+
+
+<script src="../js/upload/bootstrap-image-gallery.min.js"></script>
+<!-- The Templates plugin is included to render the upload/download listings -->
+<script src="../js/upload/tmpl.min.js"></script>
+<!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+<script src="../js/upload/load-image.min.js"></script>
+<!-- The Canvas to Blob plugin is included for image resizing functionality -->
+<script src="../js/upload/canvas-to-blob.min.js"></script>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script src="../js/upload/jquery.iframe-transport.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="../js/upload/jquery.fileupload.js"></script>
+<!-- The File Upload processing plugin -->
+<script src="../js/upload/jquery.fileupload-process.js"></script>
+<!-- The File Upload image preview & resize plugin -->
+<script src="../js/upload/jquery.fileupload-image.js"></script>
+<!-- The File Upload audio preview plugin -->
+<script src="../js/upload/jquery.fileupload-audio.js"></script>
+<!-- The File Upload video preview plugin -->
+<script src="../js/upload/jquery.fileupload-video.js"></script>
+<!-- The File Upload validation plugin -->
+<script src="../js/upload/jquery.fileupload-validate.js"></script>
+<!-- The File Upload user interface plugin -->
+<script src="../js/upload/jquery.fileupload-ui.js"></script>
+<!-- The main application script -->
+<!--script src="../js/upload/main.js"></script-->
+<!-- The XDomainRequest Transport is included for cross-domain file deletion for IE8+ -->
+<!--[if gte IE 8]><script src="js/cors/jquery.xdr-transport.js"></script><![endif]-->
+
+
+
+</body>
+</html>

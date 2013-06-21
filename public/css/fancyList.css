@@ -1,0 +1,42 @@
+div.fancyList {
+    width: 100%;
+}
+div.fancyList h2 {
+    font: 400 40px/1.5 Helvetica, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+div.fancyList ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+div.fancyList li {
+    border-bottom: 1px solid #ccc;
+}
+div.fancyList li:last-child {
+    border: none;
+}
+div.fancyList li p {
+    text-decoration: none;
+	padding:10px;
+	margin:0px;
+    color: #000;
+    display: block;
+    width: inherit;
+    -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+    -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+    -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+    -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+    transition: font-size 0.3s ease, background-color 0.3s ease;
+	
+}
+div.fancyList li p:hover {
+    font-size: 16px;
+    background: #f6f6f6;
+}
+
+div.fancyList li a{
+	text-decoration: none;
+    color: #000;
+}
