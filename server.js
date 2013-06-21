@@ -43,7 +43,7 @@ String.prototype.contains = function(it) { return this.indexOf(it) != -1; };
 
 /*jslint nomen: true, regexp: true, unparam: true, stupid: true */
 /*global require, __dirname, unescape, console */
-console.log("\n\n\n\n\n >>>>>>>>>>>>>>>>>> the port here is>> "+port);
+
 (function (port) {
 	console.log("\n\n\n\n\n >>>>>>>>>>>>>>>>>> the port here is>> "+port);
     'use strict';
