@@ -154,7 +154,7 @@ String.prototype.contains = function(it) { return this.indexOf(it) != -1; };
             case 'HEAD':
             case 'GET':
 			//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 
-                if (req.url === '/' || !req.url.startsWith("/files/")) {
+                if (req.url === '/test' || !req.url.startsWith("/files/")) {
                     setNoCacheHeaders();
                     if (req.method === 'GET') {
 						
