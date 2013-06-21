@@ -18,7 +18,7 @@ $(function () {
     // Initialize the jQuery File Upload widget:
     $('#fileupload').fileupload({
         // Uncomment the following to send cross-domain cookies:
-        xhrFields: {withCredentials: true},
+        //xhrFields: {withCredentials: true},
         url: 'http://ade-upload.herokuapp.com/'+document.URL.split("/")[4]
     });
 
@@ -58,7 +58,7 @@ $(function () {
         $('#fileupload').addClass('fileupload-processing');
         $.ajax({
             // Uncomment the following to send cross-domain cookies:
-            xhrFields: {withCredentials: true},
+            //xhrFields: {withCredentials: true},
             url: $('#fileupload').fileupload('option', 'url'),
             dataType: 'json',
             context: $('#fileupload')[0]
