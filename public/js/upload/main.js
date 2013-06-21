@@ -19,7 +19,7 @@ $(function () {
     $('#fileupload').fileupload({
         // Uncomment the following to send cross-domain cookies:
         //xhrFields: {withCredentials: true},
-        url: 'http://localhost:8888/'+document.URL.split("/")[4]
+        url: 'http://ade-mypics.herokuapp.com/'+document.URL.split("/")[4]
     });
 
     // Enable iframe cross-domain access via redirect option:
