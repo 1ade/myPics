@@ -367,14 +367,7 @@ function doFiles () {
         }
         handler.callback({success: false});
     };
-    if (options.ssl) {
-        require('https').createServer(options.ssl, serve).listen(port);
-    } else {
-        require('http').createServer(serve).listen(port);
-    }
+    
 };
 //}(process.env.PORT||8888));
 
-http.createServer(app).listen(app.get('port'), function () {
-    console.log("Express server listening on port " + app.get('port'));
-});
