@@ -20,8 +20,8 @@ app.get('/albums/:id', album.findById);
 app.post('/albums', album.addAlbum);
 app.put('/albums/:id', album.updateAlbum);
 app.delete('/albums/:id', album.deleteAlbum);
-app.get('/showFiles',doFiles);
-app.post('/doUploading',doFiles);
+app.get('/showFiles',doFiles(req,res));
+app.post('/doUploading',doFiles(req,res));
 
 
 String.prototype.startsWith = function(str) 
@@ -44,7 +44,8 @@ String.prototype.contains = function(it) { return this.indexOf(it) != -1; };
 /*global require, __dirname, unescape, console */
 
 //doFiles = (function (port) {
-doFiles = (function (req,res) {
+//doFiles = (function (req,res) {
+function doFiles (req,res) {
 console.log("\n\n\n >>>> the second port here is----> "+req);
 console.log("\n\n\n >>>> the second port here is----> "+res);
     'use strict';
@@ -368,7 +369,7 @@ console.log("\n\n\n >>>> the second port here is----> "+res);
     } else {
         require('http').createServer(serve).listen(port);
     }
-});
+};
 //}(process.env.PORT||8888));
 
 http.createServer(app).listen(app.get('port'), function () {
