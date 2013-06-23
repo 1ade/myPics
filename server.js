@@ -20,8 +20,8 @@ app.get('/albums/:id', album.findById);
 app.post('/albums', album.addAlbum);
 app.put('/albums/:id', album.updateAlbum);
 app.delete('/albums/:id', album.deleteAlbum);
-app.get('/showFiles',doFiles(req,res));
-app.post('/doUploading',doFiles(req,res));
+app.get('/showFiles',doFiles());
+app.post('/doUploading',doFiles());
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
@@ -48,7 +48,7 @@ String.prototype.contains = function(it) { return this.indexOf(it) != -1; };
 
 //doFiles = (function (port) {
 //doFiles = (function (req,res) {
-function doFiles (req,res) {
+function doFiles () {
 console.log("\n\n\n >>>> the second port here is----> "+req);
 console.log("\n\n\n >>>> the second port here is----> "+res);
     'use strict';
