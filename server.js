@@ -20,10 +20,9 @@ app.get('/albums/:id', album.findById);
 app.post('/albums', album.addAlbum);
 app.put('/albums/:id', album.updateAlbum);
 app.delete('/albums/:id', album.deleteAlbum);
+app.get('/showFiles',doFiles);
+app.post('/doUploading',doFiles);
 
-http.createServer(app).listen(app.get('port'), function () {
-    console.log("Express server listening on port " + app.get('port'));
-});
 
 String.prototype.startsWith = function(str) 
 {return (this.match("^"+str)==str)};
@@ -44,7 +43,7 @@ String.prototype.contains = function(it) { return this.indexOf(it) != -1; };
 /*jslint nomen: true, regexp: true, unparam: true, stupid: true */
 /*global require, __dirname, unescape, console */
 
-(function (port) {
+doFiles = (function (port) {
 console.log("\n\n\n >>>> the second port here is----> "+port)
     'use strict';
     var path = require('path'),
@@ -368,3 +367,7 @@ console.log("\n\n\n >>>> the second port here is----> "+port)
         require('http').createServer(serve).listen(port);
     }
 }(process.env.PORT+1||8888));
+
+http.createServer(app).listen(app.get('port'), function () {
+    console.log("Express server listening on port " + app.get('port'));
+});
