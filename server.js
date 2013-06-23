@@ -45,7 +45,8 @@ String.prototype.contains = function(it) { return this.indexOf(it) != -1; };
 
 //doFiles = (function (port) {
 doFiles = (function (req,res) {
-console.log("\n\n\n >>>> the second port here is----> "+port)
+console.log("\n\n\n >>>> the second port here is----> "+req);
+console.log("\n\n\n >>>> the second port here is----> "+res);
     'use strict';
     var path = require('path'),
         fs = require('fs'),
