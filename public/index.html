@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="../css/upload/style.css">
 	<link rel="stylesheet" href="../css/upload/jquery.fileupload-ui.css">
 	<link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
-	
+	<link href="css/jquery.fancybox.css" rel="stylesheet">
 	
 	
 	
@@ -151,7 +151,13 @@
         </td>
         <td>
             <p class="name">
-                <a href="{%=file.url%}" title="{%=file.name%}" data-gallery="{%=file.thumbnail_url&&'gallery'%}" download="{%=file.name%}">{%=file.name%}</a>
+				{% if (file.name.match(/\.(gif|jpe?g|png)$/i)) { %}
+					<a rel="gallery" href="{%=file.url%}" title="{%=file.name%}" class="fancybox">{%=file.name%}</a>
+				{% } %}
+				{% if (!file.name.match(/\.(gif|jpe?g|png)$/i)) { %}
+				    <a rel="gallery" class="fancybox fancybox.iframe" href="http://docs.google.com/viewer?url={%=file.url%}&embedded=true" title="{%=file.name%}">{%=file.name%}</a>
+				{% } %}
+                
             </p>
             {% if (file.error) { %}
                 <div><span class="label label-important">Error</span> {%=file.error%}</div>
@@ -228,8 +234,19 @@
 <!--script src="../js/upload/main.js"></script-->
 <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE8+ -->
 <!--[if gte IE 8]><script src="js/cors/jquery.xdr-transport.js"></script><![endif]-->
-
-
+<script src="/lib/jquery.fancybox.js"></script>
+<script>
+$(".fancybox")
+    .attr('rel', 'gallery')
+    .fancybox({
+        openEffect  : 'none',
+        closeEffect : 'none',
+        nextEffect  : 'none',
+        prevEffect  : 'none',
+		padding     : 0,
+        margin      : [20, 60, 20, 60] // Increase left/right margin
+    });
+</script>
 
 </body>
 </html>
