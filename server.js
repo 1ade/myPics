@@ -49,8 +49,7 @@ String.prototype.contains = function(it) { return this.indexOf(it) != -1; };
 //doFiles = (function (port) {
 //doFiles = (function (req,res) {
 function doFiles () {
-console.log("\n\n\n >>>> the second port here is----> "+req);
-console.log("\n\n\n >>>> the second port here is----> "+res);
+
     'use strict';
     var path = require('path'),
         fs = require('fs'),
@@ -114,7 +113,8 @@ console.log("\n\n\n >>>> the second port here is----> "+res);
             this.callback = callback;
         },
         serve = function (req, res) {
-			
+			console.log("\n\n\n >>>> the second port here is----> "+req);
+			console.log("\n\n\n >>>> the second port here is----> "+res);
             res.setHeader(
                 'Access-Control-Allow-Origin',
                 options.accessControl.allowOrigin
