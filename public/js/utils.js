@@ -28,13 +28,13 @@ window.utils = {
     },
 
     addValidationError: function (field, message) {
-        var controlGroup = $('#' + field).parent().parent();
+        var controlGroup = $('#' + field).parent();//.parent();
         controlGroup.addClass('error');
         $('.help-inline', controlGroup).html(message);
     },
 
     removeValidationError: function (field) {
-        var controlGroup = $('#' + field).parent().parent();
+        var controlGroup = $('#' + field).parent();//.parent();
         controlGroup.removeClass('error');
         $('.help-inline', controlGroup).html('');
     },

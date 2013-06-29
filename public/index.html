@@ -9,29 +9,28 @@
 
     <!-- Le styles -->
 	<link href='http://fonts.googleapis.com/css?family=Lily+Script+One' rel='stylesheet' type='text/css'>
-    <link href="css/metro-bootstrap.css" rel="stylesheet">
-	<link href="css/fancyList.css" rel="stylesheet">
+    <!--link href="css/bootstrap.css" rel="stylesheet"-->
+    <link href="css/fancyList.css" rel="stylesheet">
+	<link rel="stylesheet" href="../css/upload/darkTheme.css">
+	<link href="css/metro-bootstrap.css" rel="stylesheet">
 	<link rel="stylesheet" href="../css/upload/style.css">
 	<link rel="stylesheet" href="../css/upload/jquery.fileupload-ui.css">
 	<link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
 	<link href="css/jquery.fancybox.css" rel="stylesheet">
-	
-	
-	
+	<link rel="stylesheet" href="css/form.css">
+	<link href="css/bootstrap-responsive.css" rel="stylesheet">
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/mint-choc/jquery-ui.min.css" rel="stylesheet">
 
+	
     <style>
         body {
-            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */			
         }
 		
-		
-		
+	
     </style>
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
-	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/css/base/jquery.ui.all.min.css">
-    <link href="css/styles.css" rel="stylesheet">
-
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+	
+	   <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -48,17 +47,19 @@
 <div class="header"></div>
 
 <div class="container">
-	<div class="row-fluid ">
+	<!--div class="row-fluid ">
 		<div class="span2">
 		
 		</div>
-		<div class="span9">
-			<div id="content"  ></div>
-		</div>
+		<div class="span9"-->
+			
+			<div id="content"></div>
+		<!--/div>
 		<div class="span2">
 			
-		</div>
-    </div>
+		</>
+    </div-->
+	
 	<footer class="footer">
         <p class="pull-right"><a href="#">Back Home</a></p>
         <p>Built as a sample application with <a href="http://documentcloud.github.com/backbone/">Backbone.js</a>,
@@ -76,7 +77,7 @@
 
 
 <!-- modal-gallery is the modal dialog used for the image gallery -->
-<div id="modal-gallery" class="modal modal-gallery hide fade" data-filter=":odd" tabindex="-1">
+<!--div id="modal-gallery" class="modal modal-gallery hide fade" data-filter=":odd" tabindex="-1">
     <div class="modal-header">
         <a class="close" data-dismiss="modal">&times;</a>
         <h3 class="modal-title"></h3>
@@ -100,7 +101,7 @@
             <i class="icon-arrow-right icon-white"></i>
         </a>
     </div>
-</div>
+</div-->
 
 <!-- The template to display files available for upload -->
 <script id="template-upload" type="text/x-tmpl">
@@ -235,6 +236,8 @@
 <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE8+ -->
 <!--[if gte IE 8]><script src="js/cors/jquery.xdr-transport.js"></script><![endif]-->
 <script src="/lib/jquery.fancybox.js"></script>
+<script src="/lib/jquery.stellar.min.js"></script>
+<script src="/lib/jquery.transit.min.js"></script>
 <script>
 $(".fancybox")
     .attr('rel', 'gallery')
@@ -246,6 +249,8 @@ $(".fancybox")
 		padding     : 0,
         margin      : [20, 60, 20, 60] // Increase left/right margin
     });
+	
+
 </script>
 
 </body>

@@ -1,4 +1,4 @@
-<div class="row-fluid">
+<!--div class="row-fluid">
 	<br>
 		<br>
 	<div class="pull-right"><button class="btn btn-danger delete"><i class="icon-trash icon-white "></i></a></button>	</div>	
@@ -65,4 +65,58 @@
             <b>Success!</b> Wine saved successfully
         </div>
     </div>
-</div>
+</div-->
+
+<div class="frm">
+        <div class="form-screen">
+          <div class="form-icon">
+            <img src="images/icons/Pensils@2x.png" alt="Album" onmouseover="$(this).transition({rotate:'180deg'}).transition({rotate:'0deg'})">
+            <h4></h4>
+          </div>
+
+          <div class="form-form">
+			<fieldset>
+				<legend>Album</legend>
+				<form>
+					
+						<div class="control-group">
+							<input id="wineId" class="form-field" placeholder="Album ID" name="id" type="text" value="<%= _id === null ? '' : _id %>" disabled/>
+							<label for="wineId" class="form-field-icon"></label>
+						</div>
+						<div class="control-group">                        
+							<input type="text" id="name" class="form-field" placeholder="Enter Name" name="name" value="<%= name %>"/>
+							<label for="name"  class="form-field-icon icon-pencil"></label>
+							<span class=" help-inline"></span>
+						</div>
+						<div class="control-group">
+							<input type="text" id="date" class="form-field" name="date" placeholder="Select Date" value="<%= date %>"/>
+							<label for="date" class="form-field-icon icon-calendar-empty"></label>
+							<span class=" help-inline"></span>
+						</div>
+						
+						<div class="control-group">
+							<textarea id="description" class="form-field" name="description" placeholder="Enter Notes" style="height:30px" ><%= description%></textarea>
+							<label for="description" class="form-field-icon icon-pencil" ></label>
+							<span class=" help-inline"></span>
+						</div>
+						
+
+					
+					
+						<a class="btn btn-primary btn-large btn-block save" href="#"><i class="icon-save icon-2x"></i>  Save Album</a>
+						<a href="/#albums" class="btn btn-success btn-large btn-block">View Photo Albums</a>
+						<a href="/#albums" class="delete btn btn-danger btn-large btn-block <%= _id === null ? 'hide' : '' %>">Delete Album</a>
+					
+			   </form>
+		
+		   <div class="row-fluid status-bar">
+				<div >
+					<div class="alert alert-success" style="display: none">
+						<b>Success!</b> Wine saved successfully
+					</div>
+				</div>
+		   </div>
+		</fieldset>
+		  </div>
+        </div>
+      </div>

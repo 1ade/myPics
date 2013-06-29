@@ -17,7 +17,10 @@ window.PicturesListView = Backbone.View.extend({
         //var startPos = (this.options.page - 1) * 8;
         //var endPos = Math.min(startPos + 8, len);
 		//alert(album.id)
-        $(this.el).html('<div class="thumbs"></div>');
+        $(this.el).html('<div class="frm"> <div class="form-screen">'+
+						'<div class="form-icon"><img src="images/icons/Pocket@2x.png" onmouseover="$(this).transition({scale:\'1.2\'}).transition({scale:\'1\'})" alt="Album"><h4></h4></div>'+
+						'<div class="form-form">'+
+						'<div class="thumbs"></div></fieldset></div></div>');
 	
         //for (var i = startPos; i < endPos; i++) {
             //$('.thumbs', this.el).append(new PicturesListItemView({model: wines[0]}).render().el);
