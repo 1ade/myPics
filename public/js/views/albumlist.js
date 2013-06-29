@@ -12,7 +12,7 @@ window.AlbumListView = Backbone.View.extend({
 		
         //$(this.el).html('<div class="fancyList"><table class="table table-striped albums"></table></div>');
         $(this.el).html('<div class="frm"> <div class="form-screen">'+
-						'<div class="form-icon"><img src="images/icons/Book@2x.png" onmouseover="$(this).transition({scale:\'1.2\'}).transition({scale:\'1\'})" '+
+						'<div class="form-icon"><img src="img/Book@2x.png" onmouseover="$(this).transition({scale:\'1.2\'}).transition({scale:\'1\'})" '+
 						'alt="Album"><h4></h4></div>'+
 						'<div class="form-form"><form><fieldset><legend>Albums</legend>'+
 						'<table class="table table-striped albums"></table>'+
