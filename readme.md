@@ -7,5 +7,5 @@ Files can then be added to particular albums
 
 
 
-The application is also hosted online. You can test it [here](http://nodecellar.coenraets.org).
+The application is also hosted online. You can test it [here](http://ade-mypics.herokuapp.com/)
 
