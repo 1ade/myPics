@@ -1,4 +1,5 @@
 //MONGOLAB_URI: mongodb://heroku_app16441027:tes4h1r4nosb41om8rbdsmo27j@ds031618.mongolab.com:31618/heroku_app16441027
+//mongodb://heroku_app16441027_A:hGlcSpZiJyWRPjTtroThGEGGNBhkjZHp@ds031618.mongolab.com:31618/heroku_app16441027
 
 var mongo = require('mongodb');
 
@@ -11,7 +12,7 @@ db = new Db('heroku_app16441027', server, {safe: true});
 db.open(function(err, db) {
     if(!err) {
         console.log("Connected to 'heroku_app16441027' database");
-			db.authenticate('heroku_app16441027', 'tes4h1r4nosb41om8rbdsmo27j', function(err, result) {
+			db.authenticate('heroku_app16441027', 'hGlcSpZiJyWRPjTtroThGEGGNBhkjZHp', function(err, result) {
 				db.collection('albums', {safe:true}, function(err, collection) {
 					if (err) {
 						console.log("The 'albums' collection doesn't exist. Creating it with sample data...");
