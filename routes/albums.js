@@ -21,6 +21,9 @@ db.open(function(err, db) {
 				});
 			})
     }
+    else{
+         console.log(err);
+    }
 });
 
 exports.findById = function(req, res) {
