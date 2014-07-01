@@ -16,6 +16,7 @@ db.open(function(err, db) {
 				db.collection('albums', {safe:true}, function(err, collection) {
 					if (err) {
 						console.log("The 'albums' collection doesn't exist. Creating it with sample data...");
+                                                console.log("The error here is "+err);
 						populateDB();
 					}
 				});
